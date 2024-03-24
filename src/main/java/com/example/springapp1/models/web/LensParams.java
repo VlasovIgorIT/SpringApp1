@@ -1,12 +1,14 @@
 package com.example.springapp1.models.web;
 
-import lombok.AccessLevel;
-import lombok.Data;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import static lombok.AccessLevel.PRIVATE;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = PRIVATE)
 public class LensParams {
     String name;

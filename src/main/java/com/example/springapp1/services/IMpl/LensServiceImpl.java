@@ -1,6 +1,6 @@
 package com.example.springapp1.services.IMpl;
 
-import com.example.springapp1.client.LensClient;
+import com.example.springapp1.mapper.LensMapper;
 import com.example.springapp1.models.entity.Lens;
 import com.example.springapp1.models.web.LensParams;
 import com.example.springapp1.services.LensService;
@@ -20,8 +20,9 @@ import static lombok.AccessLevel.PRIVATE;
 @RequiredArgsConstructor
 @FieldDefaults(level = PRIVATE, makeFinal = true)
 public class LensServiceImpl implements LensService {
+    LensMapper mapper;
 
-    LensClient lensClient;
+//    LensClient lensClient;
 
     @Override
     public List<Lens> getAll() {
@@ -35,6 +36,6 @@ public class LensServiceImpl implements LensService {
 
     @Override
     public List<Lens> getAllByFilter(LensParams lensParams) {
-        return lensClient.getLensesByFilter(lensParams);
+        return List.of(mapper.toEntity(lensParams));
     }
 }
