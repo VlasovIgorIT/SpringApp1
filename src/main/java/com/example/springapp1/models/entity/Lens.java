@@ -17,11 +17,8 @@ public class Lens {
     String color;
     String cover;
     String design;
-    float index;
+    Double index;
     String filter;
-    int diameter;
+    Integer diameter;
     String diopter;
-
-
-
 }

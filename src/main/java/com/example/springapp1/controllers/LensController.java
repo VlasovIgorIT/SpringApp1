@@ -1,9 +1,8 @@
 package com.example.springapp1.controllers;
 
 import com.example.springapp1.models.entity.Lens;
-import com.example.springapp1.models.web.LensParams;
+import com.example.springapp1.models.web.LensFilterParams;
 import com.example.springapp1.services.LensService;
-import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
@@ -13,24 +12,21 @@ import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
 
-@RequestMapping("/lens")
-@RequiredArgsConstructor
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/lens")
 @FieldDefaults(level = PRIVATE, makeFinal = true)
 public class LensController {
 
     LensService lensService;
 
-    @GetMapping
-    public ResponseEntity<List<Lens>> getAllLens() {
-        return ResponseEntity.ok(lensService.getAll());
+    @PostMapping("/search")
+    public ResponseEntity<List<Lens>> getLensesByFilter(@RequestBody LensFilterParams lensFilterParams) {
+        return ResponseEntity.ok(lensService.getByFilter(lensFilterParams));
     }
 
-    @PostMapping
-    public ResponseEntity<List<Lens>> getLensesByFilter(@RequestBody LensParams lensParams) {
-        return ResponseEntity.ok(lensService.getAllByFilter(lensParams));
+    @GetMapping("/{id}")
+    public ResponseEntity<Lens> getById (@PathVariable String id) {
+        return ResponseEntity.ok(lensService.getById(id));
     }
-
-
-
 }
