@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.Optional;
 
-@FeignClient(url = "${feignUrl}", fallbackFactory = UserClientFallback.class)
+@FeignClient(url = "${feignUrl}/users", fallbackFactory = UserClientFallback.class)
 public interface UserClient {
 
     @PostMapping("/login")
@@ -22,9 +22,4 @@ public interface UserClient {
 
     @GetMapping("/{userId}/orders")
     List<Order> getOrderList(@PathVariable String userId);
-
-    @PostMapping("/{userId}")
-    Optional<Order> createOrder(@PathVariable String userId, @RequestBody List<LensOrderParams> params);
-
-    //TODO посмотреть один заказ
 }

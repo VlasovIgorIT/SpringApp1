@@ -29,8 +29,7 @@ public class SessionServiceImpl implements SessionService {
     public UserThinDto createSession(User user) {
         val sessionName = user.getId() + currentTimeMillis();
         lastActivityByUserId.put(sessionName, currentTimeMillis());
-        sessionMap.put(sessionName, user);
-        return userMapper.toThinDto(user);
+        return userMapper.toThinDto(sessionMap.put(sessionName, user));
     }
 
     @Override
@@ -42,7 +41,6 @@ public class SessionServiceImpl implements SessionService {
     public void closeSession(String sessionId) {
         lastActivityByUserId.remove(sessionId);
     }
-
 
     public void updateSessionActivity(String sessionId) {
         lastActivityByUserId.put(sessionId, currentTimeMillis());

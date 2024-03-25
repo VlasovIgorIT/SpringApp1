@@ -10,15 +10,15 @@ import static lombok.AccessLevel.PRIVATE;
 
 @Data
 @FieldDefaults(level = PRIVATE)
-@Schema(description = "")
+@Schema(description = "Модель для аутентификации")
 public class LoginParams {
 
     @NotBlank(message = "Email не может быть пустым")
     @Email(message = "Неверный формат email")
-    @Schema(description = "", example = "")
+    @Schema(description = "Email клиента", example = "vlasov@mail.com")
     String email;
 
     @NotBlank(message = "Пароль не может быть пустым")
-    @Schema(description = "", example = "")
+    @Schema(description = "Пароль клиента", example = "123456789")
     String password;
 }

@@ -8,7 +8,6 @@ import com.example.springapp1.services.SessionService;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import lombok.val;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -26,11 +25,10 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 
     @Override
     public UserThinDto login(LoginParams loginParams) {
-        val user = userClient.getAuthorizedUser(loginParams)
+        return userClient.getAuthorizedUser(loginParams)
+                .map(sessionService::createSession)
                 .orElseThrow(() ->  new ResponseStatusException(NOT_FOUND,
                         "Неверные данные для входа. Повторите попытку!"));
-
-        return sessionService.createSession(user);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.springapp1.services.IMpl;
 
 import com.example.springapp1.client.LensClient;
+import com.example.springapp1.client.OrderClient;
 import com.example.springapp1.client.UserClient;
 import com.example.springapp1.mapper.LensMapper;
 import com.example.springapp1.mapper.OrderMapper;
@@ -25,6 +26,7 @@ import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
 import static lombok.AccessLevel.PRIVATE;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Service
 @RequiredArgsConstructor
@@ -33,23 +35,25 @@ public class OrderServiceImpl implements OrderService {
 
     SessionService sessionService;
     OrderMapper orderMapper;
+    OrderClient orderClient;
     UserClient userClient;
     LensClient lensClient;
     LensMapper lensMapper;
 
-    //TODO
     @Override
     public OrderDto createOrder(String sessionId, List<LensOrderParams> lenses) {
         val userId = sessionService.getUserFromSession(sessionId).getId();
-        val order = userClient.createOrder(userId, lenses)
+        return orderClient.createOrder(userId, lenses)
+                .map(order -> processDtoList(of(order)).getFirst())
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR,
                         "Не удалось совершить заказ. Обратитесь к администратору"));
-        return processDtoList(of(order)).getFirst();
     }
 
     @Override
     public OrderDto getOrder(String orderId) {
-        return null;
+        return orderClient.getOrder(orderId)
+                .map(order -> processDtoList(of(order)).getFirst())
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Заказ не найден"));
     }
 
     @Override

@@ -13,21 +13,18 @@ import static lombok.AccessLevel.PRIVATE;
 @JsonInclude(NON_NULL)
 @FieldDefaults(level = PRIVATE)
 @EqualsAndHashCode(callSuper = true)
-@Schema()
+@Schema(description = "Модель для отображения информации о пользователе")
 public class UserDto extends UserThinDto{
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Адрес клиента", example = "г.Москва, пр. Вернадского 79")
     String address;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Контактный номер клиента", example = "+79991234567")
     String phone;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Email клиента", example = "vlasov@mail.com")
     String email;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "ИНН клиента", example = "1232454623198")
     int INN;
-
-    @Schema(description = "", example = "")
-    String password;
 }

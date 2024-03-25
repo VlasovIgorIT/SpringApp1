@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
+import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.ResponseEntity.ok;
 import static org.springframework.http.ResponseEntity.status;
 
@@ -32,7 +33,7 @@ public class OrderController {
                                                 @RequestBody
                                                 @NotEmpty(message = "")
                                                 List<LensOrderParams> lensOrderParams) {
-        return status(HttpStatus.CREATED)
+        return status(CREATED)
                 .body(orderService.createOrder(sessionId, lensOrderParams));
     }
 

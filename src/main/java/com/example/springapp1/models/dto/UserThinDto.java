@@ -8,15 +8,15 @@ import static lombok.AccessLevel.PRIVATE;
 
 @Data
 @FieldDefaults(level = PRIVATE)
-@Schema()
+@Schema(description = "Модель клиента для отображения и создания уникальной сессии")
 public class UserThinDto {
 
-    @Schema(description = "", example = "")
+    @Schema(description = "ID клиента", example = "125")
     String id;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Имя клиента", example = "Игорь Власов")
     String name;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "ID сессии", example = "125659421654687456")
     String sessionId;
 }

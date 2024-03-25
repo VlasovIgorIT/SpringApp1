@@ -13,27 +13,27 @@ import static lombok.AccessLevel.PRIVATE;
 @Schema(description = "Модель для поиска и фильтрации линз по критериям")
 public class LensFilterParams {
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Название линзы", example = "Moonlight")
     String name;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Цвет", example = "Черная")
     String color;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Покрытие", example = "Матовое")
     String cover;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Дизайн", example = "Утонченный")
     String design;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Индекс", example = "3.25")
     Double index;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Фильтр", example = "Поляризующий")
     String filter;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Диаметр", example = "2")
     Integer diameter;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Диоптер???)))", example = "DIOPTER")
     String diopter;
 }

@@ -1,6 +1,7 @@
 package com.example.springapp1.models.entity;
 
 import com.example.springapp1.models.enums.OrderStatus;
+import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
@@ -10,14 +11,15 @@ import java.util.Map;
 import static lombok.AccessLevel.PRIVATE;
 
 @Data
+@Builder
 @FieldDefaults(level = PRIVATE)
 public class Order {
 
     String id;
 
-    Map<String, Integer> quantityByLensIdMap;
+    OrderStatus status;
 
     LocalDateTime orderDate;
 
-    OrderStatus status;
+    Map<String, Integer> quantityByLensIdMap;
 }

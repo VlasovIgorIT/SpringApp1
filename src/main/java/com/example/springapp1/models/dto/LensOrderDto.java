@@ -8,15 +8,15 @@ import static lombok.AccessLevel.PRIVATE;
 
 @Data
 @FieldDefaults(level = PRIVATE)
-@Schema(description = "")
+@Schema(description = "Модель заказанной линзы")
 public class LensOrderDto {
 
-    @Schema(description = "", example = "")
+    @Schema(description = "ID линзы", example = "1")
     String id;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Название линзы", example = "Moonlight")
     String name;
 
-    @Schema(description = "", example = "")
+    @Schema(description = "Количество заказанных линз", example = "2")
     Integer quantity;
 }
