@@ -1,4 +1,4 @@
-package com.example.springapp1.models.web;
+package com.example.springapp1.model.web;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;

@@ -1,6 +1,6 @@
-package com.example.springapp1.models.dto;
+package com.example.springapp1.model.dto;
 
-import com.example.springapp1.models.enums.OrderStatus;
+import com.example.springapp1.model.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;

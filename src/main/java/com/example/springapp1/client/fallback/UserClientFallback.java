@@ -1,10 +1,9 @@
 package com.example.springapp1.client.fallback;
 
 import com.example.springapp1.client.UserClient;
-import com.example.springapp1.models.entity.Order;
-import com.example.springapp1.models.entity.User;
-import com.example.springapp1.models.web.LensOrderParams;
-import com.example.springapp1.models.web.LoginParams;
+import com.example.springapp1.model.entity.Order;
+import com.example.springapp1.model.entity.User;
+import com.example.springapp1.model.web.LoginParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
@@ -28,13 +27,8 @@ public class UserClientFallback implements FallbackFactory<UserClient> {
             }
 
             @Override
-            public List<Order> getOrderList(String userId) {
+            public List<Order> getOrderList(String sessionId) {
                 return emptyList();
-            }
-
-            @Override
-            public Optional<Order> createOrder(String userId, List<LensOrderParams> params) {
-                return empty();
             }
         };
     }

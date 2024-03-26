@@ -1,7 +1,7 @@
 package com.example.springapp1.mapper;
 
-import com.example.springapp1.models.dto.OrderDto;
-import com.example.springapp1.models.entity.Order;
+import com.example.springapp1.model.dto.OrderDto;
+import com.example.springapp1.model.entity.Order;
 import org.mapstruct.Mapper;
 
 import static org.mapstruct.MappingConstants.ComponentModel.SPRING;

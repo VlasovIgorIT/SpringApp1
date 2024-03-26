@@ -1,4 +1,4 @@
-package com.example.springapp1.models.dto;
+package com.example.springapp1.model.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

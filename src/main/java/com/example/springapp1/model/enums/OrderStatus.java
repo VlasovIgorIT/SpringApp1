@@ -1,4 +1,4 @@
-package com.example.springapp1.models.enums;
+package com.example.springapp1.model.enums;
 
 import lombok.Getter;
 

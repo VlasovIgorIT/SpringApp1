@@ -1,6 +1,6 @@
 package com.example.springapp1.services;
 
-import com.example.springapp1.models.dto.UserDto;
+import com.example.springapp1.model.dto.UserDto;
 
 public interface UserService {
 

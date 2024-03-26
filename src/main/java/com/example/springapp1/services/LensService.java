@@ -1,7 +1,7 @@
 package com.example.springapp1.services;
 
-import com.example.springapp1.models.entity.Lens;
-import com.example.springapp1.models.web.LensFilterParams;
+import com.example.springapp1.model.entity.Lens;
+import com.example.springapp1.model.web.LensFilterParams;
 
 import java.util.List;
 

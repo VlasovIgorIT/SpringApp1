@@ -1,8 +1,8 @@
 package com.example.springapp1.mapper;
 
-import com.example.springapp1.models.dto.UserDto;
-import com.example.springapp1.models.dto.UserThinDto;
-import com.example.springapp1.models.entity.User;
+import com.example.springapp1.model.dto.UserDto;
+import com.example.springapp1.model.dto.UserThinDto;
+import com.example.springapp1.model.entity.User;
 import org.mapstruct.Mapper;
 
 import static org.mapstruct.MappingConstants.ComponentModel.SPRING;

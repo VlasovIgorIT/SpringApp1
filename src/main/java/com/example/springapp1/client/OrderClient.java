@@ -1,8 +1,8 @@
 package com.example.springapp1.client;
 
 import com.example.springapp1.client.fallback.LensClientFallback;
-import com.example.springapp1.models.entity.Order;
-import com.example.springapp1.models.web.LensOrderParams;
+import com.example.springapp1.model.entity.Order;
+import com.example.springapp1.model.web.LensOrderParams;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 

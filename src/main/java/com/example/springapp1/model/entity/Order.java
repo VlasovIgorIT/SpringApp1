@@ -1,6 +1,6 @@
-package com.example.springapp1.models.entity;
+package com.example.springapp1.model.entity;
 
-import com.example.springapp1.models.enums.OrderStatus;
+import com.example.springapp1.model.enums.OrderStatus;
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;

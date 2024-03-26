@@ -1,7 +1,7 @@
 package com.example.springapp1.services;
 
-import com.example.springapp1.models.dto.UserThinDto;
-import com.example.springapp1.models.entity.User;
+import com.example.springapp1.model.dto.UserThinDto;
+import com.example.springapp1.model.entity.User;
 
 public interface SessionService {
 

@@ -1,8 +1,9 @@
 package com.example.springapp1.controllers;
 
-import com.example.springapp1.models.dto.OrderDto;
-import com.example.springapp1.models.web.LensOrderParams;
+import com.example.springapp1.model.dto.OrderDto;
+import com.example.springapp1.model.web.LensOrderParams;
 import com.example.springapp1.services.OrderService;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -28,8 +29,8 @@ public class OrderController {
     public ResponseEntity<OrderDto> createOrder(@RequestHeader
                                                 String sessionId,
 
-                                                @RequestBody
-                                                @NotEmpty(message = "")
+                                                @RequestBody @Valid
+                                                @NotEmpty(message = "Выберите линзы для заказа")
                                                 List<LensOrderParams> lensOrderParams) {
         return status(CREATED)
                 .body(orderService.createOrder(sessionId, lensOrderParams));

@@ -1,9 +1,9 @@
 package com.example.springapp1.client;
 
 import com.example.springapp1.client.fallback.UserClientFallback;
-import com.example.springapp1.models.entity.Order;
-import com.example.springapp1.models.entity.User;
-import com.example.springapp1.models.web.LoginParams;
+import com.example.springapp1.model.entity.Order;
+import com.example.springapp1.model.entity.User;
+import com.example.springapp1.model.web.LoginParams;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

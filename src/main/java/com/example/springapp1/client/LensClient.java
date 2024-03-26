@@ -1,8 +1,8 @@
 package com.example.springapp1.client;
 
 import com.example.springapp1.client.fallback.LensClientFallback;
-import com.example.springapp1.models.entity.Lens;
-import com.example.springapp1.models.web.LensFilterParams;
+import com.example.springapp1.model.entity.Lens;
+import com.example.springapp1.model.web.LensFilterParams;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

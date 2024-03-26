@@ -1,8 +1,8 @@
 package com.example.springapp1.client.fallback;
 
 import com.example.springapp1.client.LensClient;
-import com.example.springapp1.models.entity.Lens;
-import com.example.springapp1.models.web.LensFilterParams;
+import com.example.springapp1.model.entity.Lens;
+import com.example.springapp1.model.web.LensFilterParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;

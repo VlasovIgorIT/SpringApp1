@@ -1,7 +1,8 @@
 package com.example.springapp1.controllers;
 
-import com.example.springapp1.models.dto.UserThinDto;
-import com.example.springapp1.models.web.LoginParams;
+import com.example.springapp1.controllers.doc.AuthorizationDoc;
+import com.example.springapp1.model.dto.UserThinDto;
+import com.example.springapp1.model.web.LoginParams;
 import com.example.springapp1.services.AuthorizationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ import static org.springframework.http.ResponseEntity.ok;
 @RequestMapping("/login")
 @RequiredArgsConstructor
 @FieldDefaults(level = PRIVATE, makeFinal = true)
-public class AuthorizationController {
+public class AuthorizationController implements AuthorizationDoc {
 
     AuthorizationService authorizationService;
 
@@ -26,8 +27,9 @@ public class AuthorizationController {
         return "login";
     }
 
-    @ResponseBody
+    @Override
     @PostMapping
+    @ResponseBody
     public ResponseEntity<UserThinDto> login(@RequestBody @Valid LoginParams loginParams) {
         return ok(authorizationService.login(loginParams));
     }

@@ -1,7 +1,7 @@
 package com.example.springapp1.services.IMpl;
 
 import com.example.springapp1.mapper.UserMapper;
-import com.example.springapp1.models.dto.UserDto;
+import com.example.springapp1.model.dto.UserDto;
 import com.example.springapp1.services.SessionService;
 import com.example.springapp1.services.UserService;
 import lombok.RequiredArgsConstructor;

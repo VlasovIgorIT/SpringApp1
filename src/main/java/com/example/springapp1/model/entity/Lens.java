@@ -1,4 +1,4 @@
-package com.example.springapp1.models.entity;
+package com.example.springapp1.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;

@@ -1,6 +1,7 @@
 package com.example.springapp1.controllers;
 
-import com.example.springapp1.models.dto.UserDto;
+import com.example.springapp1.controllers.doc.UserDoc;
+import com.example.springapp1.model.dto.UserDto;
 import com.example.springapp1.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -17,10 +18,11 @@ import static org.springframework.http.ResponseEntity.ok;
 @RequiredArgsConstructor
 @RequestMapping("/users")
 @FieldDefaults(level = PRIVATE, makeFinal = true)
-public class UserController {
+public class UserController implements UserDoc {
 
     UserService userService;
 
+    @Override
     @GetMapping
     public ResponseEntity<UserDto> getUserInfo (@RequestHeader String sessionId) {
         return ok(userService.getUserInfo(sessionId));

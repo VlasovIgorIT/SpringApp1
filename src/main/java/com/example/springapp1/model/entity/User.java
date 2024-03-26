@@ -1,4 +1,4 @@
-package com.example.springapp1.models.entity;
+package com.example.springapp1.model.entity;
 
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
