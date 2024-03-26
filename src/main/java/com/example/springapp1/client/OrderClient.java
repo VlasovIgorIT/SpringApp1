@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@FeignClient(url = "${feignUrl}/orders", fallbackFactory = LensClientFallback.class)
+@FeignClient(name = "OrderClient", url = "${feignUrl}/orders", fallbackFactory = LensClientFallback.class)
 public interface OrderClient {
 
     @PostMapping

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.Optional;
 
-@FeignClient(url = "${feignUrl}/users", fallbackFactory = UserClientFallback.class)
+@FeignClient(name = "UserClient", url = "${feignUrl}/users", fallbackFactory = UserClientFallback.class)
 public interface UserClient {
 
     @PostMapping("/login")

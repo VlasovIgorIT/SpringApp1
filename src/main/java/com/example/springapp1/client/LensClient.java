@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.Optional;
 
-@FeignClient(url = "${feignUrl}/lenses", fallbackFactory = LensClientFallback.class)
+@FeignClient(name = "LensClient", url = "${feignUrl}/lenses", fallbackFactory = LensClientFallback.class)
 public interface LensClient {
 
     @PostMapping
