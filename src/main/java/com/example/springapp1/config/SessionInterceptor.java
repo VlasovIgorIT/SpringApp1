@@ -17,18 +17,6 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     SessionService sessionService;
 
-//    @Override
-//    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//        String sessionId = request.getHeader("sessionId");
-//        if (sessionId == null || !sessionService.isSessionActive(sessionId)) {
-//            sessionService.closeSession(sessionId);
-//            response.sendRedirect("/login"); // Перенаправляем на страницу логина
-//            return false; // Отменяем обработку запроса
-//        }
-//        sessionService.updateSessionActivity(sessionId);
-//        return true; // Продолжаем обработку запроса
-//    }
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         if (!request.getRequestURI().equals("/login") && !request.getRequestURI().equals("/login/")) {
