@@ -27,9 +27,12 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public UserThinDto createSession(User user) {
-        val sessionName = user.getId() + currentTimeMillis();
-        lastActivityByUserId.put(sessionName, currentTimeMillis());
-        return userMapper.toThinDto(sessionMap.put(sessionName, user));
+        val sessionId = user.getId() + currentTimeMillis();
+        lastActivityByUserId.put(sessionId, currentTimeMillis());
+        sessionMap.put(sessionId, user);
+        val dto = userMapper.toThinDto(user);
+        dto.setSessionId(sessionId);
+        return dto;
     }
 
     @Override

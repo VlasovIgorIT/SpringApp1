@@ -1,11 +1,13 @@
 package com.example.springapp1.model.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
 import static lombok.AccessLevel.PRIVATE;
 
 @Data
+@Builder
 @FieldDefaults(level = PRIVATE)
 public class User {
 
@@ -14,6 +16,6 @@ public class User {
     String address;
     String phone;
     String email;
-    int INN;
+    String INN;
     String password;
 }

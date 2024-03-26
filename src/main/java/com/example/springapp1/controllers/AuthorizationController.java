@@ -9,9 +9,15 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static lombok.AccessLevel.PRIVATE;
+import static org.springframework.http.ResponseEntity.badRequest;
 import static org.springframework.http.ResponseEntity.ok;
 
 @Controller
@@ -30,8 +36,17 @@ public class AuthorizationController implements AuthorizationDoc {
     @Override
     @PostMapping
     @ResponseBody
-    public ResponseEntity<UserThinDto> login(@RequestBody @Valid LoginParams loginParams) {
-        return ok(authorizationService.login(loginParams));
+    public ResponseEntity<?> login(@RequestBody @Valid LoginParams loginParams, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            Map<String, String> errors = new HashMap<>();
+            for (FieldError error : bindingResult.getFieldErrors()) {
+                errors.put(error.getField(), error.getDefaultMessage());
+            }
+            return badRequest().body(errors);
+        }
+
+        UserThinDto userThinDto = authorizationService.login(loginParams);
+        return ok(userThinDto);
     }
 
     @PostMapping("/logout")

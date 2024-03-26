@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -22,5 +23,6 @@ public interface AuthorizationDoc {
                     schema = @Schema(implementation = UserThinDto.class)))
     @ApiResponse(responseCode = "404", description = "Неверные логин или пароль",
             content = @Content(schema = @Schema()))
-    ResponseEntity<UserThinDto> login(@Parameter LoginParams loginParams);
+    ResponseEntity<?> login(@Parameter LoginParams loginParams,
+                            BindingResult bindingResult);
 }

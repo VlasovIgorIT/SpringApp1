@@ -29,13 +29,14 @@
             top: 15%;
             left: 50%;
             transform: translateX(-50%);
+            white-space: nowrap; /* Запрещаем перенос текста на новые строки */
         }
 
         .login-container {
             background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
             width: 300px;
             margin-left: auto;
             margin-right: auto;
@@ -89,6 +90,8 @@
             <button type="button" onclick="login()">Login</button>
         </form>
     </div>
+    <div id="error-container" style="color: red;"></div>
+    <div id="response"></div>
 </div>
 
 <script>
@@ -100,15 +103,38 @@
             "password": password
         };
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "http://localhost:8080/login", true);
+        xhr.open("POST", "http://localhost:8081/login", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log(xhr.responseText);
-                // Дополнительные действия при успешной отправке
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    console.log("JSON response:", xhr.responseText);
+                    var response = JSON.parse(xhr.responseText);
+                    console.log("Parsed JSON:", response);
+                    var welcomeMessage = "Welcome, " + response.name + "! Your session ID is " + response.sessionId;
+                    console.log("Welcome message:", welcomeMessage);
+                    document.getElementById("response").innerText = welcomeMessage;
+                } else {
+                    var errors = JSON.parse(xhr.responseText);
+                    displayErrors(errors);
+                }
             }
         };
         xhr.send(JSON.stringify(data));
+    }
+
+    function displayErrors(errors) {
+        var errorContainer = document.getElementById("error-container");
+        errorContainer.innerHTML = ""; // Очистим контейнер от предыдущих сообщений об ошибках
+
+        for (var key in errors) {
+            if (errors.hasOwnProperty(key)) {
+                var errorMessage = errors[key];
+                var errorElement = document.createElement("div");
+                errorElement.innerText = key + ": " + errorMessage;
+                errorContainer.appendChild(errorElement);
+            }
+        }
     }
 </script>
 </body>

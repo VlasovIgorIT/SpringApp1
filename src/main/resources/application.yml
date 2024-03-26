@@ -3,6 +3,6 @@ feignUrl: http://localhost:8080
 server:
   port: 8081
 
-logging:
-  level:
-    root: debug
+#logging:
+#  level:
+#    root: debug

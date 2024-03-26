@@ -14,7 +14,7 @@ import static lombok.AccessLevel.PRIVATE;
 public class LoginParams {
 
     @NotBlank(message = "Email не может быть пустым")
-    @Email(message = "Неверный формат email")
+    @Email(message = "Неверный формат")
     @Schema(description = "Email клиента", example = "vlasov@mail.com")
     String email;
 
