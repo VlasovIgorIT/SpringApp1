@@ -17,15 +17,31 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     SessionService sessionService;
 
+//    @Override
+//    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+//        String sessionId = request.getHeader("sessionId");
+//        if (sessionId == null || !sessionService.isSessionActive(sessionId)) {
+//            sessionService.closeSession(sessionId);
+//            response.sendRedirect("/login"); // Перенаправляем на страницу логина
+//            return false; // Отменяем обработку запроса
+//        }
+//        sessionService.updateSessionActivity(sessionId);
+//        return true; // Продолжаем обработку запроса
+//    }
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String sessionId = request.getHeader("sessionId");
-        if (sessionId == null || !sessionService.isSessionActive(sessionId)) {
-            sessionService.closeSession(sessionId);
-            response.sendRedirect("/login"); // Перенаправляем на страницу логина
-            return false; // Отменяем обработку запроса
+        if (!request.getRequestURI().equals("/login") && !request.getRequestURI().equals("/login/")) {
+            String sessionId = request.getHeader("sessionId");
+            if (sessionId != null && sessionService.isSessionActive(sessionId)) {
+                sessionService.updateSessionActivity(sessionId);
+                return true; // Пропускаем запрос
+            } else {
+                response.sendRedirect("/login"); // Перенаправляем на страницу логина
+                return false; // Отменяем обработку запроса
+            }
+        } else {
+            return true; // Пропускаем запрос, если он уже направлен на /login
         }
-        sessionService.updateSessionActivity(sessionId);
-        return true; // Продолжаем обработку запроса
     }
 }
